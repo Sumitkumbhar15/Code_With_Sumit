@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Code With Sumit</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/9199668c31.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+  <link rel="icon" href="./images/boy-image.png">
+  <style>
+        /* Reset & Base */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f9fafb; 
+      color: #222;
+      line-height: 1.6;
+    }
+    a {
+      color: #0073e6;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover {
+      color: #005bb5;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 0 20px;
+    }
+
+    /* Navbar */
+    nav {
+      background: #fff;
+      padding: 1rem 0;
+      box-shadow: 0 2px 10px rgb(0 0 0 / 0.07);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+    }
+    nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    nav .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: #0073e6;
+      cursor: pointer;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+    }
+    nav ul li {
+      margin-left: 25px;
+    }
+    nav ul li a {
+      font-weight: 600;
+      font-size: 1rem;
+      text-transform: uppercase;
+      color: #333;
+    }
+    nav ul li a:hover {
+      color: #0073e6;
+    }
+
+    /* Sections General */
+    section {
+      padding: 100px 0 70px;
+      background: #fff;
+      box-shadow: 0 4px 12px rgb(0 0 0 / 0.05);
+      border-radius: 10px;
+      margin: 40px 0;
+    }
+
+    /* Section Titles */
+    section h2 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-weight: 700;
+      font-size: 2.5rem;
+      color: #222;
+    }
+
+    /* Hero Section */
+    #hero {
+      padding-top: 140px;
+      text-align: left;
+      box-shadow: none;
+      background: transparent;
+      margin: 80px 0 60px;
+    }
+    #hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: #111;
+    }
+    #hero .typed-text {
+      color: #0073e6;
+      font-weight: 600;
+      font-size: 1.5rem;
+      min-height: 48px;
+      margin-bottom: 25px;
+    }
+    #hero p {
+      font-size: 1.2rem;
+      color: #555;
+      max-width: 600px;
+      
+    }
+
+    .disabled-link {
+  pointer-events: none;
+  color: gray;
+  text-decoration: none;
+  cursor: not-allowed;
+}
+
+  .hero-image {
+  width: 350px; 
+  height: autopx; 
+  position: absolute; 
+  right: 150px; 
+  top: -150px;
+  }
+
+  #hero .btn-primary {
+  margin-top: 30px;
+  padding: 14px 36px;
+  background: #0073e6;
+  text-decoration: none;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgb(0 115 230 / 0.4);
+  transition: background 0.3s ease;
+  display: inline-block;
+  text-align: center;
+  line-height: 1.2;
+}
+
+#hero .btn-primary:hover {
+  background: #005bb5;
+}
+
+#hero .link:link,
+#hero .link:visited {
+  color: white;
+  text-decoration: none;
+}
+
+.social-icons {
+  margin-top: -20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: flex-end;
+}
+
+.spacing{
+  margin-right: 20px;
+}
+
+.social-icons a {
+  font-size: 1.6rem;
+  color: #0073e6;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.social-icons a:hover {
+  color: #005bb5;
+  transform: scale(1.2);
+}
+
+
+    /* Skills Section */
+    .swiper {
+  width: 100%;
+  padding: 60px 0;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.skill-card {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 16px;
+  text-align: center;
+  width: 180px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+}
+
+.skill-card img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.skill-card p {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+.swiper-pagination-bullet {
+  background: #0073e6;
+  opacity: 0.6;
+}
+
+.swiper-pagination-bullet-active {
+  background: #0056b3;
+}
+
+    /* Projects Section */
+   .project-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.project-card img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.project-card h3 {
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+}
+
+.project-card p {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.project-card a {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+  /*education   */
+
+  .education {
+  padding: 60px 20px;
+  background: #fff;
+  position: relative;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 50px;
+  color: #111;
+}
+
+.timeline {
+  position: relative;
+  margin-left: 40px;
+  border-left: 3px solid #007bff;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 50px;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -40px;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  border: 4px solid #007bff;
+  background: #fff;
+  border-radius: 50%;
+}
+
+.timeline-content {
+  padding-left: 20px;
+}
+
+.timeline-date {
+  font-weight: 600;
+  color: #007bff;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.timeline-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 5px;
+}
+
+.timeline-subtitle {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.timeline-description {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.6;
+}
+
+
+   
+
+    /* Experience Section - Timeline */
+    #experience .timeline {
+      max-width: 900px;
+      margin: auto;
+      position: relative;
+      padding-left: 25px;
+    }
+    #experience .timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: #0073e6;
+  border-radius: 2px;
+}
+
+    .timeline-item {
+      margin-bottom: 50px;
+      position: relative;
+      padding-left: 45px;
+    }
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+    .timeline-item:before {
+      content: '';
+      position: absolute;
+      left: 12px;
+      top: 5px;
+      width: 20px;
+      height: 20px;
+      background: white;
+      border: 3px solid #0073e6;
+      border-radius: 50%;
+    }
+    .timeline-date {
+      font-weight: 600;
+      color: #0073e6;
+      margin-bottom: 5px;
+      font-size: 1rem;
+    }
+    .timeline-title {
+      font-weight: 700;
+      font-size: 1.25rem;
+      margin-bottom: 8px;
+      color: #222;
+    }
+    .timeline-desc {
+      color: #555;
+      font-size: 1rem;
+    }
+
+    /* Contact Section */
+    /* White-theme contact section */
+.contact-me.white-theme {
+  background-color: #ffffff;
+  color: #1a1a1a;
+  padding: 60px 20px;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.contact-me.white-theme h2 {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.contact-me.white-theme p {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  color: #333333;
+}
+
+.contact-me.white-theme .buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.contact-me.white-theme .button {
+  background-color: #f0f0f0;
+  color: #000;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.contact-me.white-theme .button:hover {
+  background-color: #e2e2e2;
+  transform: translateY(-2px);
+}
+
+.whatsapp-float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 20px;
+  right: 20px;
+  z-index: 100;
+}
+
+.whatsapp-float img {
+  width: 100%;
+  height: 100%;
+}
+
+    /* Footer */
+    footer {
+      background: #222;
+      color: #eee;
+      text-align: center;
+      padding: 20px 0;
+      font-size: 0.95rem;
+      margin-top: 40px;
+      border-radius: 0 0 10px 10px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        background: #fff;
+        position: fixed;
+        top: 60px;
+        right: -100%;
+        width: 220px;
+        height: calc(100% - 60px);
+        transition: right 0.3s ease;
+        box-shadow: -4px 0 15px rgb(0 0 0 / 0.1);
+        border-radius: 0 0 0 10px;
+      }
+      nav ul.active {
+        right: 0;
+      }
+      nav ul li {
+        margin: 18px 0;
+        text-align: center;
+      }
+      .menu-toggle {
+        display: block;
+        cursor: pointer;
+        font-size: 1.8rem;
+        color: #0073e6;
+      }
+    }
+    @media (min-width: 769px) {
+      .menu-toggle {
+        display: none;
+      }
+    }
+  
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="container">
+      <div class="logo">Code With Sumit</div>
+      <ul id="nav-menu">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#certificate">Certificate</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+    </div>
+  </nav>
+
+  <a href="https://wa.me/919970869807" target="_blank" class="whatsapp-float">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+</a>
+
+ <section id="hero">
+  <div class="container intro">
+    <h1>Hello, I’m Sumit Kumbhar</h1>
+    <div class="typed-text" id="typed-text"></div>
+
+    <p>Welcome to my portfolio! Explore my skills, projects, and experience to know more about me.</p>
+    <button class="btn-primary"><a href="./images/Sumit Kumbhar Resume.pdf" class="link" target="_blank" download>Download Resume</a></button>
+    
+    <div class="social-icons">
+      <a href="https://linkedin.com/in/sumit-kumbhar15" target="_blank"><i class="fa-brands fa-linkedin" style="color: #000000;"></i></a>
+      <a href="https://github.com/Sumitkumbhar15" target="_blank"><i class="fa-brands fa-github" style="color: #000000;"></i></a>
+      <a href="mailto:sumitkumbhar204@gmail.com"><i class="fa-solid fa-envelope" style="color: #000000;"></i></a>
+    </div>
+
+    <img src="./images/boy-image.png" alt="Your Image" class="hero-image" />
+  </div>
+</section>
+
+<section id="education" class="education">
+  <div class="container">
+    <h2 class="section-title">Education</h2>
+    <div class="timeline">
+      
+      <div class="timeline-item">
+        <div class="timeline-icon"></div>
+        <div class="timeline-content">
+          <h3 class="timeline-date">2024 – Present</h3>
+          <h4 class="timeline-title">BE in Computer Science & Engineering</h4>
+          <h5 class="timeline-subtitle">Mumbai University</h5>
+          <h5 class="timeline-subtitle">3<sup>rd</sup> Sem ( SGPA :- 7.22)</h5>
+          <p class="timeline-description">
+            Currently pursuing Bachelor's degree in CSE, focusing on web development, AI, and software engineering principles.
+          </p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-icon"></div>
+        <div class="timeline-content">
+          <h3 class="timeline-date">2022 – 2024</h3>
+          <h4 class="timeline-title">Diploma in Information Technology</h4>
+          <h5 class="timeline-subtitle">MSBTE</h5>
+          <h5 class="timeline-subtitle">Percentage :- 81.19%</h5>
+          <p class="timeline-description">
+            Completed Diploma in IT, gaining foundational knowledge in programming, networking, and database systems.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<section id="skills">
+  <h2 class="section-title">Skills</h2>
+  <div class="container">
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <div class="skill-card">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" />
+            <p>HTML5</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="skill-card">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" />
+            <p>CSS3</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="skill-card">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" />
+            <p>JavaScript</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="skill-card">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" />
+            <p>Git & GitHub</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="skill-card">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-original.svg" alt="WordPress" />
+            <p>WordPress</p>
+          </div>
+        </div>
+        <!-- Add more skill slides as needed -->
+      </div>
+
+      <!-- Pagination -->
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<section id="experience">
+    <div class="container">
+      <h2>Experience</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-date">JAN-FEB 2025</div>
+          <div class="timeline-title">EDUNET FOUNDATION, TECHSAKSHAM</div>
+          <div class="timeline-title">AI-ML Trainee</div>
+          <div class="timeline-desc"> Completed a 4-week Empower AI: Transformative Learning internship
+ by Edunet Foundation, Microsoft & SAP, gaining hands-on experience
+ in AI, machine learning, and data-driven solutions under Phase 3 of the
+ CSR initiative</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">01 JAN - 31 JAN 2025</div>
+          <div class="timeline-title">VirtuNexa</div>
+          <div class="timeline-title">Frontend Developer Intern  </div>
+          <div class="timeline-desc"> Developed and optimized responsive web applications using
+ HTML, CSS, and JavaScript.
+ Enhanced UI/UX design and implemented SEO best practices for
+ better performance.</div>
+            <div class="timeline-desc"> Enhanced UI/UX design and implemented SEO best practices for
+ better performance.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">JUNE - JULY 2023</div>
+          <div class="timeline-title">VikasG Web Solution</div>
+          <div class="timeline-title">Web developer Trainee</div>
+          <div class="timeline-desc"> Developed and optimized responsive web applications using
+ HTML, CSS, and JavaScript.
+ Enhanced UI/UX design and implemented SEO best practices for
+ better performance.</div>
+ <div class="timeline-desc"> Enhanced UI/UX design and implemented SEO best practices for
+ better performance.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section id="projects">
+  <h2 class="section-title">Projects</h2>
+  <div class="container">
+    <div class="swiper mySwiperProjects">
+      <div class="swiper-wrapper">
+
+        <!-- Project 1 -->
+        <div class="swiper-slide">
+          <div class="project-card">
+            <img src="./images/art-gallery.png" alt="Project 1" />
+            <h3>ART GALLERY</h3>
+            <p>Designed and developed a responsive art gallery website to showcase diverse artwork collections.</p>
+            <a href="https://strong-basbousa-a9318d.netlify.app/" class="spacing" target="_blank"><i class="fa-solid fa-eye" style="color: #000000;"></i> View Project</a>&nbsp;&nbsp;
+            <a href="https://github.com/Sumitkumbhar15/icp-11-html-css-github-project-2-artgallery-app" class="spacing" target="_blank"><i class="fa-brands fa-github" style="color: #000000;"></i> GitHub</a>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="swiper-slide">
+          <div class="project-card">
+            <img src="./images/ai healthcare.png" alt="Project 2" />
+            <h3>AI Health Care ChatBot</h3>
+            <p>Developed an AI-powered healthcare chatbot to assist users with symptom checking, health tips, and appointment guidance using natural language processing.</p>
+            <a href="#" class="spacing" target="_blank"><i class="fa-solid fa-eye" style="color: #000000;"></i> View Project</a>
+            <a href="https://github.com/Sumitkumbhar15/ai_chatbot" class="spacing" target="_blank"><i class="fa-brands fa-github" style="color: #000000;"></i> GitHub</a>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="project-card">
+            <img src="./images/health care.png" alt="Project 3" />
+            <h3>Health Care Website</h3>
+            <p>A reliable healthcare website providing easy access to medical information, services, and expert care.</p>
+            <a href="https://bejewelled-stroopwafel-b7d454.netlify.app/" class="spacing" target="_blank"><i class="fa-solid fa-eye" style="color: #000000;"></i> View Project</a>
+            <a href="#" class="spacing" target="_blank"><i class="fa-brands fa-github" style="color: #000000;"></i> GitHub</a>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="project-card">
+            <img src="./images/engineering study.png" alt="Project 4" />
+            <h3>Engineering Study</h3>
+            <p>Designed a user-friendly frontend platform for student</p>
+            <a href="https://moonlit-gumdrop-04d114.netlify.app/" class="spacing" target="_blank"><i class="fa-solid fa-eye" style="color: #000000;"></i> View Project</a>
+            <a href="#" class="spacing" target="_blank"><i class="fa-brands fa-github" style="color: #000000;"></i> GitHub</a>
+          </div>
+        </div>
+
+      </div>
+      <!-- Pagination -->
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+</section>
+
+
+<section id="certificate">
+  <h2 class="section-title">Certifictes</h2>
+  <div class="container">
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <div class="skill-card">
+            <img src="https://planetary.s3.amazonaws.com/web/assets/pictures/20180515_Indian_Space_Research_Organisation_Logo_svg.png" alt="ISRO" />
+            <p>Geo-data sharing and Cyber
+ Security</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="skill-card">
+            <img src="https://seeklogo.com/images/T/tcs-ion-logo-5EAD07A934-seeklogo.com.png" alt="TCS-ION" />
+            <p>TCS iON Career Edge 
+Young Professional</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="skill-card">
+            <img src="https://th.bing.com/th/id/OIP.jraedTKTS17VqysdFNsLkQAAAA?w=218&h=180&c=7&r=0&o=5&dpr=1.1&pid=1.7" alt="JavaScript" />
+            <p> Build a Full Webste using WordPress</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="skill-card">
+            <img src="https://planetary.s3.amazonaws.com/web/assets/pictures/20180515_Indian_Space_Research_Organisation_Logo_svg.png" alt="ISRO" />
+            <p>Geo-data sharing and Cyber
+ Security</p>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="skill-card">
+            <img src="https://seeklogo.com/images/T/tcs-ion-logo-5EAD07A934-seeklogo.com.png" alt="TCS-ION" />
+            <p>TCS iON Career Edge 
+Young Professional</p>
+          </div>
+        </div>
+         <div class="swiper-slide">
+          <div class="skill-card">
+            <img src="https://th.bing.com/th/id/OIP.jraedTKTS17VqysdFNsLkQAAAA?w=218&h=180&c=7&r=0&o=5&dpr=1.1&pid=1.7" alt="JavaScript" />
+            <p> Build a Full Webste using WordPress</p>
+          </div>
+        </div>
+        
+        <!-- Add more skill slides as needed -->
+      </div>
+
+      <!-- Pagination -->
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+</section>
+
+
+  <section id="contact" class="contact-me white-theme">
+    <h2>Contact Me</h2>
+    <p>I'm currently open to internships or projects — let's connect!</p>
+    <div class="buttons">
+      <a href="mailto:sumitkumbhar204@gmail.com" class="button"><i class="fa-solid fa-envelope"></i> Email</a>
+      <a href="https://linkedin.com/in/sumit-kumbhar15" target="_blank" class="button"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+      <a href="https://github.com/Sumitkumbhar15" target="_blank" class="button"><i class="fa-brands fa-github" style="color: #000000;"></i> GitHub</a>
+      <a href="tel:+919970869807" class="button"><i class="fa-solid fa-phone"></i> Call</a>
+</a>
+
+    </div>
+  </section>
+  
+
+  <footer>
+    <p>© 2025 SUMIT. All rights reserved.</p>
+  </footer>
+
+  <script>
+  const typedTextElement = document.getElementById('typed-text');
+  const words = ['FrontEnd Developer dedicated to innovation', 'AI & ML Enthusiast','Experienced in WordPress, Cybersecurity & Geo Data','TCS Ion Young Professional'];
+  const typingDelay = 100; 
+  const erasingDelay = 30;
+  const newWordDelay = 900; 
+  let wordIndex = 0;
+  let charIndex = 0;
+
+  function type() {
+    if (charIndex < words[wordIndex].length) {
+      typedTextElement.textContent += words[wordIndex].charAt(charIndex);
+      charIndex++;
+      setTimeout(type, typingDelay);
+    } else {
+      setTimeout(erase, newWordDelay);
+    }
+  }
+
+  function erase() {
+    if (charIndex > 0) {
+      typedTextElement.textContent = words[wordIndex].substring(0, charIndex - 1);
+      charIndex--;
+      setTimeout(erase, erasingDelay);
+    } else {
+      wordIndex++;
+      if (wordIndex >= words.length) wordIndex = 0;
+      setTimeout(type, typingDelay + 400);
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    if (words.length) setTimeout(type, 400);
+  });
+ 
+</script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+<script>
+  var swiper = new Swiper(".mySwiper", {
+    slidesPerView: 4, // Show 4 slides by default
+    spaceBetween: 30,
+    loop: true,
+    autoplay: {
+      delay: 500,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    breakpoints: {
+      1024: { slidesPerView: 4 },
+      768: { slidesPerView: 2 },
+      480: { slidesPerView: 1 }
+    }
+  });
+
+</script>
+
+
+
+<script>
+
+  var swiperProjects = new Swiper(".mySwiperProjects", {
+  slidesPerView: 1,
+  spaceBetween: 30,
+  loop: true,
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+  autoplay: {
+    delay: 2500,
+    disableOnInteraction: false, 
+  },
+  breakpoints: {
+    768: {
+      slidesPerView: 1,
+    },
+    1024: {
+      slidesPerView: 2,
+    }
+  }
+});
+
+</script>
+
+
+</body>
+</html>
